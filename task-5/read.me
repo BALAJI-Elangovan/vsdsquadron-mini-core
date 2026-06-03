@@ -1,0 +1,100 @@
+# UART Controlled LED Pattern Sequencer
+
+## Overview
+
+This project demonstrates a modular embedded firmware application developed for the VSDSquadron Mini development board based on the CH32V003 RISC-V microcontroller.
+
+The application receives commands through UART and executes user-defined LED blink patterns on PD6. The firmware follows a layered architecture with separate GPIO and UART drivers, allowing easy reuse and maintenance.
+
+The system accepts pattern commands from a serial terminal and converts them into LED ON/OFF sequences with fixed timing intervals.
+
+---
+
+## Target Hardware
+
+- VSDSquadron Mini
+- CH32V003 RISC-V Microcontroller
+- Onboard/User LED connected to PD6
+- UART1 Communication Interface
+
+---
+
+## Supported Drivers
+
+- GPIO Driver
+- UART Driver
+
+---
+
+## Features
+
+- UART command interface
+- LED pattern sequencing
+- Runtime pattern execution
+- STOP command support
+- Modular driver architecture
+- Register-level peripheral control
+
+---
+
+## Folder Structure
+
+task4/
+
+├── app/
+
+│ └── main.c
+
+├── drivers/
+
+│ ├── gpio.c
+
+│ ├── gpio.h
+
+│ ├── uart.c
+
+│ └── uart.h
+
+├── pattern.c
+
+├── pattern.h
+
+├── platformio.ini
+
+└── documentation/
+
+---
+
+## Supported Commands
+
+PLAY <pattern>
+
+STOP
+
+Examples:
+
+PLAY 101010
+
+PLAY 11110000
+
+STOP
+
+---
+
+## Quick Start
+
+Build:
+
+pio run
+
+Flash:
+
+pio run -t upload
+
+Open Serial Monitor:
+
+pio device monitor
+
+Send:
+
+PLAY 101010
